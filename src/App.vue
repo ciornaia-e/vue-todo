@@ -1,5 +1,4 @@
 <script>
-  import { RouterLink, RouterView } from 'vue-router'
   import TodoList from './components/TodoList.vue'
   import AddTodo from './components/AddTodo.vue'
   
@@ -8,11 +7,7 @@
     components: { TodoList, AddTodo },
     data() {
       return {
-        todos: [
-          {id: 1, title: 'Todo bread', completed: false},
-          {id: 2, title: 'Todo milk', completed: false},
-          {id: 3, title: 'Todo fruits', completed: false}
-        ]
+        todos: []
       }
     },
     methods: {
@@ -22,6 +17,11 @@
       addTodo(todo) {
         this.todos.push(todo)
       }
+    },
+    mounted() {
+      fetch('https://jsonplaceholder.typicode.com/todos?_limit=3')
+        .then(response => response.json())
+        .then(json => this.todos = json)
     }
   }
 </script>
@@ -34,12 +34,6 @@
         <AddTodo @addTodo="addTodo" />
         <TodoList :todos="todos" @removeTodo="removeTodo" />
       </div>
-        <!-- <nav>
-          <RouterLink to="/">Home</RouterLink>
-          <RouterLink to="/about">About</RouterLink>
-        </nav> -->
     </div>
-
-    <!-- <RouterView /> -->
   </div>
 </template>

@@ -1,11 +1,11 @@
 <script>
     export default {
+        data() {
+            return {
+                title: ''
+            }
+        },
         methods: {
-            data() {
-                return {
-                    title: ''
-                }
-            },
             onSubmit() {
                 if (this.title.trim()) {
                     const newTodo = {

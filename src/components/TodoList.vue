@@ -15,7 +15,8 @@
 <template>
     <ul class="list">
         <TodoItem 
-            v-for="todo in todos" 
+            v-for="(todo, index) in todos" 
+            :index="index"
             :key="todo.id" 
             :todo="todo"
             @removeTodo="removeTodo" 

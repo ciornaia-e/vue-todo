@@ -4,7 +4,8 @@
             todo: {
                 type: Object,
                 required: true
-            }
+            },
+            index: Number
         },
         methods: {
             onComplete() {
@@ -21,7 +22,7 @@
     <li class="item">
         <div :class="{done: todo.completed}">
             <input @change="onComplete" type="checkbox" class="checkbox">
-            <strong class="iterator">{{ todo.id }}</strong>
+            <strong class="iterator">{{ index + 1 }}</strong>
             <span>{{ todo.title }}</span>
         </div>
         <button @click="onRemove" class="remove">&times;</button>
